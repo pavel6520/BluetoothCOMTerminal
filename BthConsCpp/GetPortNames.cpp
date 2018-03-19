@@ -50,59 +50,6 @@ __if_not_exists(LSTATUS)
 
 ///////////////////////////// Implementation //////////////////////////////////
 
-#ifndef NO_CENUMERATESERIAL_USING_CREATEFILE
-_Return_type_success_(return != 0) BOOL GetPortNames::UsingCreateFile(_Inout_ CPortsArray& ports)
-{
-	//Make sure we clear out any elements which may already be in the array
-#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-	ports.clear();
-#else
-	ports.RemoveAll();
-#endif //#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-
-	//Up to 255 COM ports are supported so we iterate through all of them seeing
-	//if we can open them or if we fail to open them, get an access denied or general error error.
-	//Both of these cases indicate that there is a COM port at that number. 
-	for (UINT i = 1; i<256; i++)
-	{
-		//Form the Raw device name
-		TCHAR szPort[32];
-		szPort[0] = _T('\0');
-		_stprintf_s(szPort, _T("\\\\.\\COM%u"), i);
-
-		//Try to open the port
-		BOOL bSuccess = FALSE;
-		ATL::CHandle port(CreateFile(szPort, GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, 0, 0));
-		if (port == INVALID_HANDLE_VALUE)
-		{
-			DWORD dwError = GetLastError();
-
-			//Check to see if the error was because some other app had the port open or a general failure
-			if (dwError == ERROR_ACCESS_DENIED || dwError == ERROR_GEN_FAILURE || dwError == ERROR_SHARING_VIOLATION || dwError == ERROR_SEM_TIMEOUT)
-				bSuccess = TRUE;
-		}
-		else
-		{
-			//The port was opened successfully
-			bSuccess = TRUE;
-		}
-
-		//Add the port number to the array which will be returned
-		if (bSuccess)
-		{
-#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-			ports.push_back(i);
-#else
-			ports.Add(i);
-#endif //#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-		}
-	}
-
-	//Return the success indicator
-	return TRUE;
-}
-#endif //#ifndef NO_CENUMERATESERIAL_USING_CREATEFILE
-
 #if !defined(NO_CENUMERATESERIAL_USING_SETUPAPI1) || !defined(NO_CENUMERATESERIAL_USING_SETUPAPI2)
 _Return_type_success_(return != 0) BOOL GetPortNames::RegQueryValueString(_In_ ATL::CRegKey& key, _In_ LPCTSTR lpValueName, _Out_ LPTSTR& pszValue)
 {

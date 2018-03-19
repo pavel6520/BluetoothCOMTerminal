@@ -18,22 +18,23 @@
 
 
 ///////////////////////// Includes ////////////////////////////////////////////                      
-
+/*
 #ifndef __ATLBASE_H__
 #pragma message("To avoid this message, please put atlbase.h in your pre compiled header (normally stdafx.h)")
 #include <atlbase.h>
 #endif //#ifndef __ATLBASE_H__
-
+*//*
 #ifndef _VECTOR_
 #pragma message("To avoid this message, please put vector in your pre compiled header (normally stdafx.h)")
 #include <vector>
 #endif //#ifndef _VECTOR_
+*//*
 #ifndef _STRING_
 #pragma message("To avoid this message, please put string in your pre compiled header (normally stdafx.h)")
 #include <string>
 #endif //#ifndef _STRING_
-
-#ifdef _AFX
+*/
+/*#ifdef _AFX
 #ifndef __AFXTEMPL_H__
 #pragma message("To avoid this message, please put afxtempl.h in your pre compiled header (normally stdafx.h)")
 #include <afxtempl.h> 
@@ -43,7 +44,7 @@
 #pragma message("To avoid this message, please put atlstr.h in your pre compiled header (normally stdafx.h)")
 #include <atlstr.h>
 #endif //#ifndef __ATLSTR_H__
-#endif //#ifdef _AFX
+#endif //#ifdef _AFX*/
 
 
 ///////////////////////// Classes /////////////////////////////////////////////
@@ -78,7 +79,6 @@ public:
 
 protected:
 	//Methods
-	static _Return_type_success_(return != 0) BOOL UsingCreateFile(_Inout_ CPortsArray& ports);
 #if !defined(NO_CENUMERATESERIAL_USING_SETUPAPI1) || !defined(NO_CENUMERATESERIAL_USING_SETUPAPI2)
 	static _Return_type_success_(return != 0) BOOL RegQueryValueString(_In_ ATL::CRegKey& key, _In_ LPCTSTR lpValueName, _Out_ LPTSTR& pszValue);
 	static _Return_type_success_(return != 0) BOOL QueryRegistryPortName(_In_ ATL::CRegKey& deviceKey, _Out_ int& nPort);

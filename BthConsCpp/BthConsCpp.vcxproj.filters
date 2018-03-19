@@ -24,6 +24,9 @@
     <ClInclude Include="GetPortNames.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="S_WS_Convert.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -33,6 +36,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="GetPortNames.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="S_WS_Convert.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
