@@ -61,7 +61,7 @@ _Return_type_success_(return != 0) BOOL GetPortNames::RegQueryValueString(_In_ A
 	LSTATUS nStatus = key.QueryStringValue(lpValueName, nullptr, &nChars);
 	if (nStatus != ERROR_SUCCESS)
 	{
-		SetLastError((DWORD)nStatus);
+		SetLastError(nStatus);
 		return FALSE;
 	}
 
@@ -80,7 +80,7 @@ _Return_type_success_(return != 0) BOOL GetPortNames::RegQueryValueString(_In_ A
 	{
 		LocalFree(pszValue);
 		pszValue = nullptr;
-		SetLastError((DWORD)nStatus);
+		SetLastError(nStatus);
 		return FALSE;
 	}
 	if ((dwType != REG_SZ) && (dwType != REG_EXPAND_SZ))
@@ -173,7 +173,7 @@ _Return_type_success_(return != 0) BOOL GetPortNames::QueryUsingSetupAPI(const G
 				if (QueryRegistryPortName(deviceKey, nPort))
 				{
 #ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-					ports.push_back((UINT)nPort);
+					ports.push_back(nPort);
 #else
 					ports.Add(nPort);
 #endif //#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
@@ -289,42 +289,3 @@ _Return_type_success_(return != 0) BOOL GetPortNames::UsingSetupAPI2(_Inout_ CPo
 	return QueryUsingSetupAPI(GUID_DEVINTERFACE_SERENUM_BUS_ENUMERATOR, DIGCF_PRESENT, ports, friendlyNames);
 }
 #endif //#ifndef NO_CENUMERATESERIAL_USING_SETUPAPI2
-
-bool GetPortNames::UpdatePortsList(GetPortNames::CPortsArray *ports, GetPortNames::CNamesArray *names, size_t *i) {
-#ifndef NO_CENUMERATESERIAL_USING_SETUPAPI1
-	if (GetPortNames::UsingSetupAPI1(*ports, *names)){
-#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-		*i = (*ports).size();
-#else
-		*i = (*ports).GetSize();
-#endif //#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-		return false;
-	}
-	//else
-#else
-#ifndef NO_CENUMERATESERIAL_USING_SETUPAPI2
-	if (GetPortNames::UsingSetupAPI2(ports, names)) {
-#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-		*i = (*ports).size();
-#else
-		*i = (*ports).GetSize();
-#endif //#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-		return false;
-	}
-	//else
-#endif //#ifndef NO_CENUMERATESERIAL_USING_SETUPAPI2
-#endif
-	return true;
-}
-
-/*std::string GetPortNames::GetPortName(GetPortNames::CNamesArray *names, size_t val) {
-#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-	return S_WS_Convert::WideStringToAnsi((*names)[val]);
-	//При обращении напрямую по указателю происходит исключение при работе функции WideCharToMultiByte:
-	//Вызвано исключение по адресу 0x742A586C (KernelBase.dll) в BthConsCpp.exe: 0xC0000005: нарушение прав доступа при чтении по адресу 0x2449C852.
-	//Буду признателен, если кто нибуть найдет выход из этой ситуации.
-#else
-	for (i = 0; i<ports.GetSize(); i++)
-		_tprintf(_T("COM%u <%s>\n"), ports[i], names[i].GetString());
-#endif //#ifndef CENUMERATESERIAL_MFC_EXTENSIONS
-}*/
