@@ -77,6 +77,9 @@ public:
 	static _Return_type_success_(return != 0) BOOL UsingSetupAPI2(_Inout_ CPortsArray& ports, _Inout_ CNamesArray& friendlyNames);
 #endif //#ifndef NO_CENUMERATESERIAL_USING_SETUPAPI2
 
+	static bool UpdatePortsList(GetPortNames::CPortsArray *ports, GetPortNames::CNamesArray *names, size_t *i);
+	//static std::string GetPortName(GetPortNames::CNamesArray *names, size_t val); //Причина удаления описана в реализации.
+
 protected:
 	//Methods
 #if !defined(NO_CENUMERATESERIAL_USING_SETUPAPI1) || !defined(NO_CENUMERATESERIAL_USING_SETUPAPI2)
