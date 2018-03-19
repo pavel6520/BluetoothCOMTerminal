@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #ifndef _Return_type_success_
 #define _Return_type_success_(expr)
@@ -78,7 +78,7 @@ public:
 #endif //#ifndef NO_CENUMERATESERIAL_USING_SETUPAPI2
 
 	static bool UpdatePortsList(GetPortNames::CPortsArray *ports, GetPortNames::CNamesArray *names, size_t *i);
-	//static std::string GetPortName(GetPortNames::CNamesArray *names, size_t val); //Причина удаления описана в реализации.
+	//static std::string GetPortName(GetPortNames::CNamesArray *names, size_t val); //РџСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ РѕРїРёСЃР°РЅР° РІ СЂРµР°Р»РёР·Р°С†РёРё.
 
 protected:
 	//Methods

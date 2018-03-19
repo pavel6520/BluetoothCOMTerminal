@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 class S_WS_Convert
 {
 public:

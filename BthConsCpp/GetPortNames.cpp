@@ -1,4 +1,4 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #include "GetPortNames.h"
 
 /////////////////////////////// Macros / Defines //////////////////////////////
@@ -320,9 +320,9 @@ bool GetPortNames::UpdatePortsList(GetPortNames::CPortsArray *ports, GetPortName
 /*std::string GetPortNames::GetPortName(GetPortNames::CNamesArray *names, size_t val) {
 #ifndef CENUMERATESERIAL_MFC_EXTENSIONS
 	return S_WS_Convert::WideStringToAnsi((*names)[val]);
-	//При обращении напрямую по указателю происходит исключение при работе функции WideCharToMultiByte:
-	//Вызвано исключение по адресу 0x742A586C (KernelBase.dll) в BthConsCpp.exe: 0xC0000005: нарушение прав доступа при чтении по адресу 0x2449C852.
-	//Буду признателен, если кто нибуть найдет выход из этой ситуации.
+	//РџСЂРё РѕР±СЂР°С‰РµРЅРёРё РЅР°РїСЂСЏРјСѓСЋ РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ РїСЂРѕРёСЃС…РѕРґРёС‚ РёСЃРєР»СЋС‡РµРЅРёРµ РїСЂРё СЂР°Р±РѕС‚Рµ С„СѓРЅРєС†РёРё WideCharToMultiByte:
+	//Р’С‹Р·РІР°РЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ РїРѕ Р°РґСЂРµСЃСѓ 0x742A586C (KernelBase.dll) РІ BthConsCpp.exe: 0xC0000005: РЅР°СЂСѓС€РµРЅРёРµ РїСЂР°РІ РґРѕСЃС‚СѓРїР° РїСЂРё С‡С‚РµРЅРёРё РїРѕ Р°РґСЂРµСЃСѓ 0x2449C852.
+	//Р‘СѓРґСѓ РїСЂРёР·РЅР°С‚РµР»РµРЅ, РµСЃР»Рё РєС‚Рѕ РЅРёР±СѓС‚СЊ РЅР°Р№РґРµС‚ РІС‹С…РѕРґ РёР· СЌС‚РѕР№ СЃРёС‚СѓР°С†РёРё.
 #else
 	for (i = 0; i<ports.GetSize(); i++)
 		_tprintf(_T("COM%u <%s>\n"), ports[i], names[i].GetString());

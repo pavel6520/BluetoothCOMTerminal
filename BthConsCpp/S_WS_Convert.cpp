@@ -1,4 +1,4 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #include "S_WS_Convert.h"
 
 
@@ -11,7 +11,7 @@ S_WS_Convert::~S_WS_Convert()
 {
 }
 
-std::wstring _stdcall S_WS_Convert::AnsiStringToWide(std::string &Str) //Конвертация из std::string в std::wstring.
+std::wstring _stdcall S_WS_Convert::AnsiStringToWide(std::string &Str) //РљРѕРЅРІРµСЂС‚Р°С†РёСЏ РёР· std::string РІ std::wstring.
 {
 	DWORD const BuffSize = MultiByteToWideChar(CP_ACP, 0, Str.c_str(), -1, NULL, 0);
 	if (!BuffSize) return NULL;
@@ -22,7 +22,7 @@ std::wstring _stdcall S_WS_Convert::AnsiStringToWide(std::string &Str) //Конверт
 	return ws;
 }
 
-std::string _stdcall S_WS_Convert::WideStringToAnsi(std::wstring &Str) //Конвертация из std::wstring в std::string.
+std::string _stdcall S_WS_Convert::WideStringToAnsi(std::wstring &Str) //РљРѕРЅРІРµСЂС‚Р°С†РёСЏ РёР· std::wstring РІ std::string.
 {
 	int const BuffSize = WideCharToMultiByte(CP_ACP, 0, Str.c_str(), -1, NULL, 0, NULL, NULL);
 	if (!BuffSize) return NULL;
