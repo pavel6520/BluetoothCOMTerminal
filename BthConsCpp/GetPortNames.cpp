@@ -35,10 +35,10 @@
 
 #pragma comment(lib, "WbemUuid.lib")
 
-#ifndef _MSPORTS_H
+/*#ifndef _MSPORTS_H
 #pragma message("To avoid this message, please put msports.h in your pre compiled header (normally stdafx.h)")
 #include <msports.h>
-#endif //#ifndef _MSPORTS_H
+#endif //#ifndef _MSPORTS_H*/
 
 #pragma comment(lib, "msports.lib")
 

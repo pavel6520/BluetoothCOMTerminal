@@ -7,4 +7,3 @@ public:
 	static std::string _stdcall WideStringToAnsi(std::wstring &Str);
 	~S_WS_Convert();
 };
-
