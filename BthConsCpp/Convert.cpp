@@ -1,17 +1,17 @@
 ﻿#include "stdafx.h"
-#include "S_WS_Convert.h"
+#include "Convert.h"
 
 
-S_WS_Convert::S_WS_Convert()
+Convert::Convert()
 {
 }
 
 
-S_WS_Convert::~S_WS_Convert()
+Convert::~Convert()
 {
 }
 
-std::wstring _stdcall S_WS_Convert::AnsiStringToWide(std::string &Str) //Конвертация из std::string в std::wstring.
+std::wstring _stdcall Convert::AnsiStringToWide(std::string &Str) //Конвертация из std::string в std::wstring.
 {
 	DWORD const BuffSize = MultiByteToWideChar(CP_ACP, 0, Str.c_str(), -1, NULL, 0);
 	if (!BuffSize) return NULL;
@@ -22,7 +22,7 @@ std::wstring _stdcall S_WS_Convert::AnsiStringToWide(std::string &Str) //Кон�
 	return ws;
 }
 
-std::string _stdcall S_WS_Convert::WideStringToAnsi(std::wstring &Str) //Конвертация из std::wstring в std::string.
+std::string _stdcall Convert::WideStringToAnsi(std::wstring &Str) //Конвертация из std::wstring в std::string.
 {
 	int const BuffSize = WideCharToMultiByte(CP_ACP, 0, Str.c_str(), -1, NULL, 0, NULL, NULL);
 	if (!BuffSize) return NULL;
@@ -32,3 +32,15 @@ std::string _stdcall S_WS_Convert::WideStringToAnsi(std::wstring &Str) //Кон�
 	std::string s(ws.begin(), ws.end());
 	return s;
 }
+
+/*int _stdcall Convert::CharToLPCSTR(LPCSTR &portName, int portNum) {
+	char sC[] = { 'C', 'O', 'M', '\0', '\0', '\0', '\0' };
+	int numP = portNum, i = 2;
+	while (numP / ((int)pow(10, i)) % 10 == 0) i--;
+	while (numP) {
+		*(sC + 3 + i--) = (char)(numP % 10 + '0');
+		numP /= 10;
+	}
+	portName = (sC);
+	return 0;
+}*/

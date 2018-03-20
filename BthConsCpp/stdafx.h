@@ -55,7 +55,7 @@
 //#include <stdio.h>
 #include <iostream>
 #include <string>
-#include "S_WS_Convert.h"
+#include "Convert.h"
 
 //#define CENUMERATESERIAL_MFC_EXTENSIONS //Uncomment this to test the MFC / ATL integration
 
